@@ -1,0 +1,29 @@
+[project]
+name = "thesis"
+version = "0.1.0"
+description = "A contamination-controlled, cost-inclusive evaluation of LLM-based equity trading strategies"
+requires-python = ">=3.11"
+dependencies = [
+    "pandas>=3.0",  # pct_change in pandas<3 pad-fills NaN by default, breaking delisting handling
+    "numpy>=1.26",
+    "pyarrow>=15",
+    "scipy>=1.12",
+    "statsmodels>=0.14",
+    "yfinance>=0.2.40",
+    "requests>=2.31",
+    "matplotlib>=3.9",
+]
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40", "openai>=1.40"]
+dev = ["pytest>=8"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
